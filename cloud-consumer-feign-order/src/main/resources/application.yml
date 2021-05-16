@@ -1,0 +1,23 @@
+server:
+  port: 80
+eureka:
+  client:
+    #表示是否将自己注册进注册中心中，默认true
+    register-with-eureka: false
+    #是否从注册中心抓取已有的注册信息，默认true，单点无所谓，集群必须设置
+    fetch-registry: true
+    service-url:
+      #      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+#设置ribbon客户端超时时间
+ribbon:
+  #建立连接后从服务器读取到资源所用的时间
+  ReadTimeout: 5000
+  #建立连接所用的时间
+  ConnectTimeout: 5000
+logging:
+  level:
+    com.boot.service.PaymentFeignService: debug
+feign:
+  hystrix:
+    enabled: true
